@@ -21,6 +21,8 @@
 		A1000012000000000000000C /* SortOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000012000000000000000C /* SortOption.swift */; };
 		A1000013000000000000000D /* NotificationLeadTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000013000000000000000D /* NotificationLeadTime.swift */; };
 		A1000014000000000000000E /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000014000000000000000E /* SettingsView.swift */; };
+		A1000015000000000000000F /* DoseRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2000015000000000000000F /* DoseRecord.swift */; };
+		A10000160000000000000010 /* DoseHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000160000000000000010 /* DoseHistoryView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,9 @@
 		A2000012000000000000000C /* SortOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortOption.swift; sourceTree = "<group>"; };
 		A2000013000000000000000D /* NotificationLeadTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationLeadTime.swift; sourceTree = "<group>"; };
 		A2000014000000000000000E /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		A2000015000000000000000F /* DoseRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoseRecord.swift; sourceTree = "<group>"; };
+		A20000160000000000000010 /* DoseHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoseHistoryView.swift; sourceTree = "<group>"; };
+		A20000170000000000000011 /* MedicationTracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MedicationTracker.entitlements; sourceTree = "<group>"; };
 		A30000010000000000000001 /* MedicationTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MedicationTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -70,6 +75,7 @@
 				A50000070000000000000007 /* Notifications */,
 				A2000010000000000000000A /* Assets.xcassets */,
 				A2000011000000000000000B /* PrivacyInfo.xcprivacy */,
+				A20000170000000000000011 /* MedicationTracker.entitlements */,
 			);
 			path = MedicationTracker;
 			sourceTree = "<group>";
@@ -78,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				A20000050000000000000005 /* Medication.swift */,
+				A2000015000000000000000F /* DoseRecord.swift */,
 				A20000060000000000000006 /* MedicationStore.swift */,
 				A2000012000000000000000C /* SortOption.swift */,
 				A2000013000000000000000D /* NotificationLeadTime.swift */,
@@ -92,6 +99,7 @@
 				A20000030000000000000003 /* AddMedicationView.swift */,
 				A20000040000000000000004 /* MedicationRowView.swift */,
 				A2000014000000000000000E /* SettingsView.swift */,
+				A20000160000000000000010 /* DoseHistoryView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -203,6 +211,8 @@
 				A1000012000000000000000C /* SortOption.swift in Sources */,
 				A1000013000000000000000D /* NotificationLeadTime.swift in Sources */,
 				A1000014000000000000000E /* SettingsView.swift in Sources */,
+				A1000015000000000000000F /* DoseRecord.swift in Sources */,
+				A10000160000000000000010 /* DoseHistoryView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,10 +346,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MedicationTracker/MedicationTracker.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEAD_CODE_STRIPPING = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -357,7 +368,7 @@
 					"@executable_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = 3.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.damianrickard.MedicationTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -374,10 +385,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = MedicationTracker/MedicationTracker.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEAD_CODE_STRIPPING = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -395,7 +407,7 @@
 					"@executable_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 2.0.0;
+				MARKETING_VERSION = 3.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.damianrickard.MedicationTracker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;

@@ -94,15 +94,17 @@ struct AddMedicationView: View {
             TextField("Notes (optional)", text: $notes, axis: .vertical)
                 .lineLimit(2...4)
 
-            Toggle("Set last dose time", isOn: $hasLastDose)
+            if !isEditing {
+                Toggle("Set last dose time", isOn: $hasLastDose)
 
-            if hasLastDose {
-                DatePicker(
-                    "Last dose",
-                    selection: $lastDoseDate,
-                    in: ...Date(),
-                    displayedComponents: [.date, .hourAndMinute]
-                )
+                if hasLastDose {
+                    DatePicker(
+                        "Last dose",
+                        selection: $lastDoseDate,
+                        in: ...Date(),
+                        displayedComponents: [.date, .hourAndMinute]
+                    )
+                }
             }
         }
         .formStyle(.grouped)
@@ -119,10 +121,6 @@ struct AddMedicationView: View {
                     customHours = max(Int(med.frequencyHours), 1)
                 }
                 notes = med.notes
-                if let lastGiven = med.lastGivenDate {
-                    hasLastDose = true
-                    lastDoseDate = lastGiven
-                }
             }
         }
     }
@@ -133,13 +131,13 @@ struct AddMedicationView: View {
             updated.name = name.trimmingCharacters(in: .whitespacesAndNewlines)
             updated.frequencyHours = frequencyHours
             updated.notes = notes.trimmingCharacters(in: .whitespacesAndNewlines)
-            updated.lastGivenDate = hasLastDose ? lastDoseDate : nil
+            // Dose history is preserved — managed via DoseHistoryView
             store.updateMedication(updated)
         } else {
             let medication = Medication(
                 name: name.trimmingCharacters(in: .whitespacesAndNewlines),
                 frequencyHours: frequencyHours,
-                lastGivenDate: hasLastDose ? lastDoseDate : nil,
+                doseHistory: hasLastDose ? [DoseRecord(date: lastDoseDate)] : [],
                 notes: notes.trimmingCharacters(in: .whitespacesAndNewlines)
             )
             store.addMedication(medication)

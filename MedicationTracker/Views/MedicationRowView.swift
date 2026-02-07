@@ -5,6 +5,7 @@ struct MedicationRowView: View {
     let medication: Medication
     @State private var showingLogPastDose = false
     @State private var showingEdit = false
+    @State private var showingHistory = false
     @State private var pastDoseDate = Date()
 
     var body: some View {
@@ -29,7 +30,7 @@ struct MedicationRowView: View {
                 }
 
                 if let lastGiven = medication.lastGivenDate {
-                    Text("Last given: \(TimeFormatting.formatDate(lastGiven))")
+                    Text("Last given: \(TimeFormatting.formatDate(lastGiven)) (\(medication.doseHistory.count) \(medication.doseHistory.count == 1 ? "dose" : "doses"))")
                         .font(.caption)
                         .foregroundStyle(.secondary)
                 }
@@ -112,6 +113,17 @@ struct MedicationRowView: View {
                 .buttonStyle(.borderless)
                 .sheet(isPresented: $showingEdit) {
                     AddMedicationView(medicationToEdit: medication)
+                }
+
+                Button(action: {
+                    showingHistory = true
+                }) {
+                    Label("History", systemImage: "list.bullet.clipboard")
+                        .font(.caption)
+                }
+                .buttonStyle(.borderless)
+                .sheet(isPresented: $showingHistory) {
+                    DoseHistoryView(medication: medication)
                 }
             }
         }
